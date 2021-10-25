@@ -112,10 +112,10 @@ document.querySelector('.speed-toggler').addEventListener('click',function(){
 document.querySelector('button.fullscreen').addEventListener('click',function(){
     if(document.fullscreenElement){
         document.exitFullscreen()
-        video.classList.remove('fullscreen')
+        // video.classList.remove('fullscreen')
     } else {
         openFullScreen(videoContainer)
-        video.classList.add('fullscreen')
+        // video.classList.add('fullscreen')
     }
 })
 
