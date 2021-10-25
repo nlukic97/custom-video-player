@@ -2,7 +2,6 @@
 import * as Time from './time.js';
 
 
-
 // defining variables
 let videoContainer = document.querySelector('.player')
 let video = document.querySelector('video')
@@ -17,19 +16,26 @@ let currVolume //which will be used to return the volume to the previous state u
 // controls.style.visibility = 'visible';
 
 
-
 video.addEventListener('loadedmetadata',function(){
-    document.querySelector('#current-time').innerText = Time.getTotalTime(Math.round(video.currentTime)) //need to include the 00 for hours if we have hours
-    document.querySelector('#video-duration').innerText = Time.getTotalTime(Math.round(video.duration))
+    setVideoTime()
 })
+
+
+// This will help the time get set for the video, because the event on 'loadedmetadata' does not fire when there is network throttle
+if(video.readyState >=2) setVideoTime();
+
+function setVideoTime(){
+    document.querySelector('#current-time').innerText = Time.getTotalTime(Math.round(video.currentTime)) //need to include the 00 for hours if we have hours
+    document.querySelector('#video-duration').innerText = '/ ' + Time.getTotalTime(Math.round(video.duration))
+}
 
 
 // when the video is fully loaded and ready to be played, then we get the time (otherwise 'video.duration' will return NaN)
-video.addEventListener('canplaythrough',function(){
+// video.addEventListener('canplaythrough',function(){
     // console.log(video.currentTime, video.duration);
     // document.querySelector('#current-time').innerText = Time.getTotalTime(Math.round(video.currentTime)) //need to include the 00 for hours if we have hours
     // document.querySelector('#video-duration').innerText = Time.getTotalTime(Math.round(video.duration))
-})
+// })
 
 video.addEventListener('timeupdate',function(){
     document.querySelector('#current-time').innerText = Time.getTotalTime(Math.round(video.currentTime))
