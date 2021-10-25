@@ -1,4 +1,4 @@
-export function formatSeconds(seconds){
+export function getTotalTime(seconds){
     let formatHours = 0;
     let formatMinutes = 0;
     let formatSeconds = 0
@@ -18,8 +18,9 @@ export function formatSeconds(seconds){
 
 
     formatHours = (formatHours < 10) ? '0' + formatHours.toString() : formatHours.toString();
+    console.log(formatHours);
     formatMinutes = (formatMinutes < 10) ? '0' + formatMinutes.toString() : formatMinutes.toString(); 
     formatSeconds = (seconds < 10) ? '0' + seconds.toString() : seconds.toString();
 
-    return (formatHours > 0) ? formatHours + ':' + formatMinutes + ':'+ formatSeconds : formatMinutes + ':'+ formatSeconds;
+    return (formatHours == 0) ? formatMinutes + ':'+ formatSeconds : formatHours + ':' + formatMinutes + ':'+ formatSeconds
 }

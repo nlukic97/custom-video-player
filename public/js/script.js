@@ -1,17 +1,20 @@
 
 import * as Time from './time.js';
 
-console.log(Time.formatSeconds(13133));
 
+
+// defining variables
 let videoContainer = document.querySelector('.player')
 let video = document.querySelector('video')
 let controls = document.querySelector('.controls')
 
 let speedControls = document.querySelector('.speed-controls')
-let currVolume
+let currVolume //which will be used to return the volume to the previous state upon unmuting
 
-video.removeAttribute('controls');
-controls.style.visibility = 'visible';
+
+
+// video.removeAttribute('controls');
+// controls.style.visibility = 'visible';
 
 
 
@@ -19,8 +22,8 @@ controls.style.visibility = 'visible';
 
 // when the video is fully loaded and ready to be played, then we get the time (otherwise 'video.duration' will return NaN)
 video.addEventListener('canplay',function(){
-    document.querySelector('#current-time').innerText = Time.formatSeconds(Math.round(video.currentTime))
-    document.querySelector('#video-duration').innerText = Time.formatSeconds(Math.round(video.duration))
+    document.querySelector('#current-time').innerText = Time.getTotalTime(Math.round(video.currentTime)) //need to include the 00 for hours if we have hours
+    document.querySelector('#video-duration').innerText = Time.getTotalTime(Math.round(video.duration))
 })
 
 video.addEventListener('timeupdate',function(){
