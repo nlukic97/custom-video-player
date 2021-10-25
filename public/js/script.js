@@ -3,6 +3,8 @@ let videoContainer = document.querySelector('.player')
 let video = document.querySelector('video')
 let controls = document.querySelector('.controls')
 
+let speedControls = document.querySelector('.speed-controls')
+
 video.removeAttribute('controls');
 controls.style.visibility = 'visible';
 
@@ -62,8 +64,17 @@ let speeds = [
 speeds.forEach(speed=>{
     document.querySelector(`button.speed-${speed.identifyer}`).addEventListener('click',function(){
         video.playbackRate = speed.speed
+        speedControls.classList.remove('visible')
     })
 })
+
+
+
+// Speed toggler
+document.querySelector('.speed-toggler').addEventListener('click',function(){
+    speedControls.classList.toggle('visible')
+})
+
 
 // fullscreen button
 document.querySelector('button.fullscreen').addEventListener('click',function(){
@@ -85,4 +96,5 @@ function openFullScreen(item){
         item.msRequestFullscreen();
     }
 }
+
 
