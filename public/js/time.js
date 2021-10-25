@@ -18,7 +18,6 @@ export function getTotalTime(seconds){
 
 
     formatHours = (formatHours < 10) ? '0' + formatHours.toString() : formatHours.toString();
-    console.log(formatHours);
     formatMinutes = (formatMinutes < 10) ? '0' + formatMinutes.toString() : formatMinutes.toString(); 
     formatSeconds = (seconds < 10) ? '0' + seconds.toString() : seconds.toString();
 

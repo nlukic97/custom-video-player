@@ -6,7 +6,7 @@ import * as Time from './time.js';
 // defining variables
 let videoContainer = document.querySelector('.player')
 let video = document.querySelector('video')
-let controls = document.querySelector('.controls')
+// let controls = document.querySelector('.controls')
 
 let speedControls = document.querySelector('.speed-controls')
 let currVolume //which will be used to return the volume to the previous state upon unmuting
@@ -32,7 +32,6 @@ video.addEventListener('timeupdate',function(){
 })
 
 document.querySelector('#progress-bar').addEventListener('input',function(){
-    console.log(this.value);
     video.currentTime = this.value * video.duration / 100
 })
 
@@ -42,7 +41,6 @@ document.querySelector('#progress-bar').addEventListener('input',function(){
 
 // Playing and pausing the video
 document.querySelector('button.play-pause').addEventListener('click',function(){
-    console.log(this);
     
     if(this.classList.contains('playing')){
         video.pause()
