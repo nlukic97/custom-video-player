@@ -21,7 +21,7 @@ let currVolume //which will be used to return the volume to the previous state u
 
 
 // when the video is fully loaded and ready to be played, then we get the time (otherwise 'video.duration' will return NaN)
-video.addEventListener('canplay',function(){
+video.addEventListener('canplaythrough',function(){
     document.querySelector('#current-time').innerText = Time.getTotalTime(Math.round(video.currentTime)) //need to include the 00 for hours if we have hours
     document.querySelector('#video-duration').innerText = Time.getTotalTime(Math.round(video.duration))
 })
