@@ -1,0 +1,5 @@
+.video-container {
+    width: 80%;
+    margin: 0 auto;
+    display: block; /** Why does setting 'inline-block' not make this centered? */
+}
