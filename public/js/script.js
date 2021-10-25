@@ -7,21 +7,50 @@ let videoContainer = document.querySelector('.player')
 let video = document.querySelector('video')
 // let controls = document.querySelector('.controls')
 
+let controls = document.querySelector('.controls')
 let speedControls = document.querySelector('.speed-controls')
 let currVolume //which will be used to return the volume to the previous state upon unmuting
 
 
 
-// video.removeAttribute('controls');
-// controls.style.visibility = 'visible';
+/** ------ Interval which checks if the user has hovered over the video, which will show the menu and progress bar until the user stops moving the mouse ------ */
+let mouseMoveInt; //the interval which will be used
+let i_count = 0;
+let intervalStarted = false;
+
+function startMouseMoveInterval(){
+    mouseMoveInt = setInterval(function(){
+        i_count++
+        if(i_count >= 2){
+            controls.classList.remove('visible')
+            clearInterval(mouseMoveInt)
+            intervalStarted = false;
+        }
+    },1000)
+}
+
+
+videoContainer.addEventListener('mousemove',function(){
+    i_count = 0;
+
+    // only start the interval once, it can only be restarted if it manages to end without 'i_count' being reset
+    if(intervalStarted === false){
+        intervalStarted = true;
+        controls.classList.add('visible')
+        startMouseMoveInterval()
+    }
+})
+
+
+
+
 
 
 video.addEventListener('loadedmetadata',function(){
     setVideoTime()
 })
 
-
-// This will help the time get set for the video, because the event on 'loadedmetadata' does not fire when there is network throttle
+// eventListener 'loadedmetadata' does not fire when there is network throttle, but this line fixes that
 if(video.readyState >=2) setVideoTime();
 
 function setVideoTime(){
@@ -30,12 +59,8 @@ function setVideoTime(){
 }
 
 
-// when the video is fully loaded and ready to be played, then we get the time (otherwise 'video.duration' will return NaN)
-// video.addEventListener('canplaythrough',function(){
-    // console.log(video.currentTime, video.duration);
-    // document.querySelector('#current-time').innerText = Time.getTotalTime(Math.round(video.currentTime)) //need to include the 00 for hours if we have hours
-    // document.querySelector('#video-duration').innerText = Time.getTotalTime(Math.round(video.duration))
-// })
+
+
 
 video.addEventListener('timeupdate',function(){
     document.querySelector('#current-time').innerText = Time.getTotalTime(Math.round(video.currentTime))

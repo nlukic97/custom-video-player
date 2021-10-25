@@ -27,18 +27,27 @@
 
 
 .controls {
-    /* opacity: 0; */
-    opacity: 1  ;
+    opacity: 0;
     width: 100%;
     box-sizing: border-box;
     position: absolute;
     bottom: 0;
     left: 0;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.733);
     transition: 1s all;
     display: flex;
     flex-direction: column;
     padding: 0 5px;
+}
+
+.controls.visible {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.controls:hover {
+    opacity: 1;
+    transition: opacity 0.3s;
 }
 
 .other-controls {
