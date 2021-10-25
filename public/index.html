@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
     
     <!-- JavaScript -->
-    <script src="js/script.js" defer></script>
+    <script type="module" src="js/script.js" defer></script>
 </head>
 <body>
     
@@ -21,13 +21,17 @@
         </video>
         
         <div class="controls">
-            <div>
+            <div class="buttons-column">
                 <button class="play-pause">Play</button>
                 <button class="mute">mute</button>
                 <input type="range" name="volume" id="volume-bar" min='0' max='100' value="100">
+                <div>
+                    <span id="current-time"></span> /
+                    <span id="video-duration"></span>
+                </div>
             </div>
             
-            <div>
+            <div class="buttons-column">
                 <div class="speed-controls-container">
                     <button class="speed-toggler">Speed</button>
                     

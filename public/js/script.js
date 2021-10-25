@@ -1,14 +1,31 @@
 
+import * as Time from './time.js';
+
+console.log(Time.formatSeconds(13133));
+
 let videoContainer = document.querySelector('.player')
 let video = document.querySelector('video')
 let controls = document.querySelector('.controls')
 
 let speedControls = document.querySelector('.speed-controls')
+let currVolume
 
 video.removeAttribute('controls');
 controls.style.visibility = 'visible';
 
-let currVolume
+
+
+
+
+// when the video is fully loaded and ready to be played, then we get the time (otherwise 'video.duration' will return NaN)
+video.addEventListener('canplay',function(){
+    document.querySelector('#current-time').innerText = Time.formatSeconds(Math.round(video.currentTime))
+    document.querySelector('#video-duration').innerText = Time.formatSeconds(Math.round(video.duration))
+})
+
+video.addEventListener('timeupdate',function(){
+    document.querySelector('#current-time').innerText = Time.formatSeconds(Math.round(video.currentTime))
+})
 
 
 // Playing and pausing the video
@@ -29,11 +46,12 @@ document.querySelector('button.mute').addEventListener('click',function(){
     if(video.classList.contains('muted')){
         video.volume = currVolume
         document.querySelector('#volume-bar').value = currVolume * 100;
+
     } else {
         currVolume = video.volume
-        console.log(currVolume);
-        document.querySelector('#volume-bar').value = 0;
+
         video.volume = 0;
+        document.querySelector('#volume-bar').value = 0;
     }
     video.classList.toggle('muted')
 })

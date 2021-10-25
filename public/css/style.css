@@ -20,10 +20,15 @@
     width: 100%;
 }
 
+.buttons-column {
+    display: flex;
+    align-items: center;
+}
+
 
 .controls {
     /* opacity: 0; */
-    opacity: 1;
+    opacity: 1  ;
     width: 100%;
     box-sizing: border-box;
     position: absolute;
