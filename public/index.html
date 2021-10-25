@@ -21,23 +21,27 @@
         </video>
         
         <div class="controls">
-            <button class="play-pause">Play</button>
-            
-            <button class="mute">mute</button>
-            
-            <div class="speed-controls-container">
-                <button class="speed-toggler">Speed</button>
-
-                <ul class="speed-controls">
-                    <li></li><button class="speed-050">0.5</button></li>
-                    <li></li><button class="speed-075">0.75</button></li>
-                    <li></li><button class="speed-100">1</button></li>
-                    <li></li><button class="speed-150">1.5</button></li>
-                    <li></li><button class="speed-200">2</button></li>
-                </ul>
+            <div>
+                <button class="play-pause">Play</button>
+                <button class="mute">mute</button>
+                <input type="range" name="volume" id="volume-bar" min='0' max='100' value="100">
             </div>
             
-            <button class="fullscreen">fullscreen</button>
+            <div>
+                <div class="speed-controls-container">
+                    <button class="speed-toggler">Speed</button>
+                    
+                    <ul class="speed-controls">
+                        <li></li><button class="speed-050">0.5</button></li>
+                        <li></li><button class="speed-075">0.75</button></li>
+                        <li></li><button class="speed-100">1</button></li>
+                        <li></li><button class="speed-150">1.5</button></li>
+                        <li></li><button class="speed-200">2</button></li>
+                    </ul>
+                </div>
+                
+                <button class="fullscreen">fullscreen</button>
+            </div>
         </div>
     </div>
     

@@ -28,9 +28,11 @@ document.querySelector('button.play-pause').addEventListener('click',function(){
 document.querySelector('button.mute').addEventListener('click',function(){
     if(video.classList.contains('muted')){
         video.volume = currVolume
+        document.querySelector('#volume-bar').value = currVolume * 100;
     } else {
         currVolume = video.volume
         console.log(currVolume);
+        document.querySelector('#volume-bar').value = 0;
         video.volume = 0;
     }
     video.classList.toggle('muted')
@@ -95,6 +97,16 @@ function openFullScreen(item){
     } else if (item.msRequestFullscreen) { /* IE11 */
         item.msRequestFullscreen();
     }
+}
+
+
+document.querySelector('#volume-bar').addEventListener('input',function(){
+    console.log(this.value);
+    changeVolume(video,this.value/100)
+})
+
+function changeVolume(video, volume){
+    video.volume = volume
 }
 
 

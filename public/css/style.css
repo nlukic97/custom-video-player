@@ -3,8 +3,15 @@
     padding: 0;
 }
 
-.video-container {
+
+.player {
     width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.video-container {
+    width: 100%;
     margin: 0 auto;
     display: block; /** Why does setting 'inline-block' not make this centered? */
 }
@@ -15,38 +22,38 @@
 
 
 .controls {
-    /* visibility: hidden; */
-    /* opacity: 0.5; */
+    /* opacity: 0; */
     opacity: 1;
-    width: 400px;
-    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
     position: absolute;
-    bottom: 20px;
-    left: 50%;
-    margin-left: -200px;
-    /* background-color: black; */
-    box-shadow: 3px 3px 5px black;
-    transition: 1s all;
+    bottom: 0;
+    left: 0;
+    border: 1px solid red;
+    background-color: red;
+    /* transition: 1s all; */
     display: flex;
+    justify-content: space-between;
   }
   
-  .player:hover .controls, player:focus .controls {
+  /* .player:hover .controls, .player:focus .controls {
     opacity: 1;
-  }
+  } */
 
 
   .speed-controls-container {
       position: relative;
+      display: inline-block;
   }
 
   .speed-controls-container ul.speed-controls {
     display: none;
     list-style-type: none;  
     position: absolute;
-    left: 0;
+    right: 0;
     bottom: 100%;
     background-color: orange;
-    width: 100%;
+    width: 150%;
   }
 
   .speed-controls-container ul.speed-controls.visible {
