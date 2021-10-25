@@ -27,8 +27,17 @@ video.addEventListener('canplay',function(){
 })
 
 video.addEventListener('timeupdate',function(){
-    document.querySelector('#current-time').innerText = Time.formatSeconds(Math.round(video.currentTime))
+    document.querySelector('#current-time').innerText = Time.getTotalTime(Math.round(video.currentTime))
+    document.querySelector('#progress-bar').value =  video.currentTime * 100 / video.duration
 })
+
+document.querySelector('#progress-bar').addEventListener('input',function(){
+    console.log(this.value);
+    video.currentTime = this.value * video.duration / 100
+})
+
+
+
 
 
 // Playing and pausing the video
