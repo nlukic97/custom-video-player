@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nikola Lukic | Zadatak 7</title>
     
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/279db593be.js" crossorigin="anonymous"></script>
+    
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     
@@ -29,8 +32,8 @@
 
                 <!-- left column -->
                 <div class="buttons-column">
-                    <button class="play-pause">Play</button>
-                    <button class="mute">mute</button>
+                    <button class="play-pause"><i class="fas fa-play"></i></button>
+                    <button class="mute"><i class="fas fa-volume-up"></i></button>
                     <input type="range" name="volume" id="volume-bar" min='0' max='100' value="100">
                     
                     <div class="time-container">
@@ -42,18 +45,18 @@
                 <!-- right column -->
                 <div class="buttons-column">
                     <div class="speed-controls-container">
-                        <button class="speed-toggler">Speed</button>
+                        <button class="speed-toggler"><i class="fas fa-cog"></i></button>
                         
                         <ul class="speed-controls">
-                            <li></li><button class="speed-050">0.5</button></li>
-                            <li></li><button class="speed-075">0.75</button></li>
-                            <li></li><button class="speed-100">1</button></li>
-                            <li></li><button class="speed-150">1.5</button></li>
-                            <li></li><button class="speed-200">2</button></li>
+                            <li><button class="speed-050">x0.5</button></li>
+                            <li><button class="speed-075">x0.75</button></li>
+                            <li><button class="speed-100">x1</button></li>
+                            <li><button class="speed-150">x1.5</button></li>
+                            <li><button class="speed-200">x2</button></li>
                         </ul>
                     </div>
                     
-                    <button class="fullscreen">fullscreen</button>
+                    <button class="fullscreen"><i class="fas fa-expand"></i></button>
                 </div>
             </div>
         </div>

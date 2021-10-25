@@ -80,8 +80,10 @@ document.querySelector('button.play-pause').addEventListener('click',function(){
     
     if(this.classList.contains('playing')){
         video.pause()
+        this.firstChild.classList = 'fas fa-play'
     } else {
         video.play()
+        this.firstChild.classList = 'fas fa-pause'
     }
     
     this.classList.toggle('playing')
@@ -92,12 +94,14 @@ document.querySelector('button.mute').addEventListener('click',function(){
     if(video.classList.contains('muted')){
         video.volume = currVolume
         document.querySelector('#volume-bar').value = currVolume * 100;
-
+        this.firstChild.classList = 'fas fa-volume-up'
+        
     } else {
         currVolume = video.volume
-
+        
         video.volume = 0;
         document.querySelector('#volume-bar').value = 0;
+        this.firstChild.classList = 'fas fa-volume-mute'
     }
     video.classList.toggle('muted')
 })
@@ -137,19 +141,19 @@ speeds.forEach(speed=>{
 
 
 // Speed toggler
-document.querySelector('.speed-toggler').addEventListener('click',function(){
-    speedControls.classList.toggle('visible')
-})
+// document.querySelector('.speed-toggler').addEventListener('click',function(){
+//     speedControls.classList.toggle('visible')
+// })
 
 
 // fullscreen button
 document.querySelector('button.fullscreen').addEventListener('click',function(){
     if(document.fullscreenElement){
         document.exitFullscreen()
-        // video.classList.remove('fullscreen')
+        this.firstChild.classList = 'fas fa-expand'
     } else {
         openFullScreen(videoContainer)
-        // video.classList.add('fullscreen')
+        this.firstChild.classList = 'fas fa-compress'
     }
 })
 
