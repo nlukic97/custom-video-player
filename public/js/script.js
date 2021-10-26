@@ -5,7 +5,6 @@ import * as Time from './time.js';
 // defining variables
 let videoContainer = document.querySelector('.player')
 let video = document.querySelector('video')
-// let controls = document.querySelector('.controls')
 
 let controls = document.querySelector('.controls')
 let speedControls = document.querySelector('.speed-controls')
@@ -32,7 +31,6 @@ function startMouseMoveInterval(){
 
 videoContainer.addEventListener('mousemove',function(){
     i_count = 0;
-
     // only start the interval once, it can only be restarted if it manages to end without 'i_count' being reset
     if(intervalStarted === false){
         intervalStarted = true;
