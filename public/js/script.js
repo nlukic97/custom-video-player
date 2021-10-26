@@ -65,6 +65,7 @@ function setVideoTime(){
 video.addEventListener('timeupdate',function(){
     document.querySelector('#current-time').innerText = Time.getTotalTime(Math.round(video.currentTime))
     document.querySelector('#progress-bar').value =  video.currentTime * 100 / video.duration
+    document.querySelector('.progress-curr').style.width =  Math.ceil(video.currentTime * 100 / video.duration) + '%'
 })
 
 document.querySelector('#progress-bar').addEventListener('input',function(){
@@ -92,14 +93,16 @@ document.querySelector('button.play-pause').addEventListener('click',function(){
 
 document.querySelector('button.mute').addEventListener('click',function(){
     if(video.classList.contains('muted')){
-        video.volume = currVolume
+        // video.volume = currVolume
+        changeVolume(video,currVolume * 100)
         document.querySelector('#volume-bar').value = currVolume * 100;
         this.firstChild.classList = 'fas fa-volume-up'
         
     } else {
         currVolume = video.volume
         
-        video.volume = 0;
+        // video.volume = 0;
+        changeVolume(video,0)
         document.querySelector('#volume-bar').value = 0;
         this.firstChild.classList = 'fas fa-volume-mute'
     }
@@ -169,12 +172,12 @@ function openFullScreen(item){
 
 
 document.querySelector('#volume-bar').addEventListener('input',function(){
-    console.log(this.value);
-    changeVolume(video,this.value/100)
+    changeVolume(video,this.value)
 })
 
 function changeVolume(video, volume){
-    video.volume = volume
+    document.querySelector('.volume-curr').style.width = volume +'%';
+    video.volume = volume / 100
 }
 
 
