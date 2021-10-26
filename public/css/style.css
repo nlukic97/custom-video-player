@@ -18,8 +18,23 @@ button {
 
 button:hover {
     cursor: pointer;
-    background-color: rgb(66, 64, 64); /*testing still*/
+    background-color: rgb(66, 64, 64);
 }
+
+button.mute {
+    margin-right: 4px;
+}
+
+/* to balance out the small difference in width between this button and the unmuted symbol*/
+button.mute i.fas.fa-volume-mute {
+    padding-right: 2px; 
+}
+
+/* to balance out the increased width when the 'redo' symbol is present */
+button.play-pause i.fas.fa-pause, button.play-pause i.fas.fa-play  {
+    padding-right: 1.8px; 
+}
+
 
  
 .player {

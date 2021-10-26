@@ -78,7 +78,6 @@ document.querySelector('#progress-bar').addEventListener('input',function(){
 
 // Playing and pausing the video
 document.querySelector('button.play-pause').addEventListener('click',function(){
-    
     if(this.classList.contains('playing')){
         video.pause()
         this.firstChild.classList = 'fas fa-play'
@@ -91,7 +90,7 @@ document.querySelector('button.play-pause').addEventListener('click',function(){
 
 // listener for when video ends playback
 video.addEventListener('ended',function(){
-    document.querySelector('button.play-pause').firstChild.classList = 'fas fa-play'
+    document.querySelector('button.play-pause').firstChild.classList = 'fas fa-redo'
     document.querySelector('button.play-pause').classList.remove('playing')
 })
 
@@ -101,26 +100,21 @@ video.addEventListener('ended',function(){
 
 // handling the volume amd muting
 document.querySelector('button.mute').addEventListener('click',function(){
-    if(video.classList.contains('muted')){
-        // video.volume = currVolume
+    if(video.volume === 0){
         changeVolume(video,currVolume * 100)
-        // this.firstChild.classList = 'fas fa-volume-up'
         
     } else {
         currVolume = video.volume
         changeVolume(video,0)
-        // this.firstChild.classList = 'fas fa-volume-mute'
     }
-    video.classList.toggle('muted')
 })
 
-document.querySelector('#volume-bar').addEventListener('input',function(){
-    if(this.value === 0){
-        video.classList.add('muted')
-        currVolume = 1
+// handling the toggle of the volume range bar
+document.querySelector('#volume-bar').addEventListener('input', function(){
+    if(this.value < 1){
+        currVolume = 1 //the video is muted with the volume bar, so we want the volume to be 100% upon clicking unmute button
         changeVolume(video,this.value)
     } else {
-        video.classList.remove('muted')
         currVolume = this.value
         changeVolume(video,this.value)
 
