@@ -97,24 +97,55 @@ video.addEventListener('ended',function(){
 
 
 
-// handling the mute
+
+
+// handling the volume amd muting
 document.querySelector('button.mute').addEventListener('click',function(){
     if(video.classList.contains('muted')){
         // video.volume = currVolume
         changeVolume(video,currVolume * 100)
-        document.querySelector('#volume-bar').value = currVolume * 100;
-        this.firstChild.classList = 'fas fa-volume-up'
+        // this.firstChild.classList = 'fas fa-volume-up'
         
     } else {
         currVolume = video.volume
-        
-        // video.volume = 0;
         changeVolume(video,0)
-        document.querySelector('#volume-bar').value = 0;
-        this.firstChild.classList = 'fas fa-volume-mute'
+        // this.firstChild.classList = 'fas fa-volume-mute'
     }
     video.classList.toggle('muted')
 })
+
+document.querySelector('#volume-bar').addEventListener('input',function(){
+    if(this.value === 0){
+        video.classList.add('muted')
+        currVolume = 1
+        changeVolume(video,this.value)
+    } else {
+        video.classList.remove('muted')
+        currVolume = this.value
+        changeVolume(video,this.value)
+
+    }
+
+})
+
+
+function changeVolume(video, volume){
+    document.querySelector('.volume-curr').style.width = volume +'%';
+    document.querySelector('#volume-bar').value = volume;
+    video.volume = volume / 100
+
+    if(volume == 0){
+        document.querySelector('button.mute').firstChild.classList = 'fas fa-volume-mute'
+        
+    } else {
+        document.querySelector('button.mute').firstChild.classList = 'fas fa-volume-up'
+        
+    }
+}
+
+
+
+
 
 
 //video speed playback listeners
@@ -175,16 +206,6 @@ function openFullScreen(item){
     } else if (item.msRequestFullscreen) { /* IE11 */
         item.msRequestFullscreen();
     }
-}
-
-
-document.querySelector('#volume-bar').addEventListener('input',function(){
-    changeVolume(video,this.value)
-})
-
-function changeVolume(video, volume){
-    document.querySelector('.volume-curr').style.width = volume +'%';
-    video.volume = volume / 100
 }
 
 
