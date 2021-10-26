@@ -45,7 +45,7 @@ videoContainer.addEventListener('mousemove',function(){
 
 
 
-
+// loading meta data to be shown (video duration) once loaded
 video.addEventListener('loadedmetadata',function(){
     setVideoTime()
 })
@@ -61,7 +61,7 @@ function setVideoTime(){
 
 
 
-
+// uppdate when the time of the video changes (either manually or automatically while the video is playing)
 video.addEventListener('timeupdate',function(){
     document.querySelector('#current-time').innerText = Time.getTotalTime(Math.round(video.currentTime))
     document.querySelector('#progress-bar').value =  video.currentTime * 100 / video.duration
@@ -86,11 +86,18 @@ document.querySelector('button.play-pause').addEventListener('click',function(){
         video.play()
         this.firstChild.classList = 'fas fa-pause'
     }
-    
     this.classList.toggle('playing')
 })
 
+// listener for when video ends playback
+video.addEventListener('ended',function(){
+    document.querySelector('button.play-pause').firstChild.classList = 'fas fa-play'
+    document.querySelector('button.play-pause').classList.remove('playing')
+})
 
+
+
+// handling the mute
 document.querySelector('button.mute').addEventListener('click',function(){
     if(video.classList.contains('muted')){
         // video.volume = currVolume
