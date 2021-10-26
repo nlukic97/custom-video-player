@@ -5,9 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nikola Lukic | Zadatak 7</title>
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/279db593be.js" crossorigin="anonymous"></script>
     
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mediaQuery.css">
     
     <!-- JavaScript -->
     <script type="module" src="js/script.js" defer></script>
@@ -20,21 +25,32 @@
             <p>Your browser doesn't support HTML5 video. Here is a <a href="rabbit320.mp4">link to the video</a> instead.</p>
         </video>
         
-        <div class="controls">
+        <div class="controls visible">
+
             <!-- time progress bar -->
-            <input type="range" id="progress-bar" name="progress" min='0' max='100' value='0'>
+            <div class="time-progress-container">
+                <div class="progress-curr" style="width: 0%;"></div>
+                <input type="range" id="progress-bar" name="progress" min='0' max='100' value='0'>
+            </div>
             
             
             <div class="other-controls">
 
                 <!-- left column -->
                 <div class="buttons-column">
-                    <button class="play-pause">Play</button>
-                    <button class="mute">mute</button>
-                    <input type="range" name="volume" id="volume-bar" min='0' max='100' value="100">
+                    <button class="play-pause"><i class="fas fa-play"></i></button>
+                    <button class="mute"><i class="fas fa-volume-up"></i></button>
+
+                    <!-- volume progress bar -->
+                    <div class="volume-container">
+                        <div class="volume-inner-container">
+                            <div class="volume-curr" style="width: 100%;"></div>
+                            <input type="range" name="volume" id="volume-bar" min='0' max='100' value="100">
+                        </div>
+                    </div>
                     
                     <div class="time-container">
-                        <span id="current-time"></span> <span>/</span>
+                        <span id="current-time"></span> <span></span>
                         <span id="video-duration"></span>
                     </div>
                 </div>
@@ -42,18 +58,18 @@
                 <!-- right column -->
                 <div class="buttons-column">
                     <div class="speed-controls-container">
-                        <button class="speed-toggler">Speed</button>
+                        <button class="speed-toggler"><i class="fas fa-cog"></i></button>
                         
                         <ul class="speed-controls">
-                            <li></li><button class="speed-050">0.5</button></li>
-                            <li></li><button class="speed-075">0.75</button></li>
-                            <li></li><button class="speed-100">1</button></li>
-                            <li></li><button class="speed-150">1.5</button></li>
-                            <li></li><button class="speed-200">2</button></li>
+                            <li><button class="speed-050">x0.5</button></li>
+                            <li><button class="speed-075">x0.75</button></li>
+                            <li><button class="speed-100">x1</button></li>
+                            <li><button class="speed-150">x1.5</button></li>
+                            <li><button class="speed-200">x2</button></li>
                         </ul>
                     </div>
                     
-                    <button class="fullscreen">fullscreen</button>
+                    <button class="fullscreen"><i class="fas fa-expand"></i></button>
                 </div>
             </div>
         </div>

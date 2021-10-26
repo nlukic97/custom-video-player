@@ -1,0 +1,52 @@
+@media screen and (max-width: 923px) {
+    .player {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 705px) {
+    .player {
+        width: 80%;
+    }
+}
+
+
+@media screen and (max-width: 705px) {
+    .player {
+        width: 90%;
+    }
+}
+
+
+@media screen and (max-width:632px) {
+    .player {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .player {
+        width: 100%;
+    }
+
+    .speed-controls-container ul.speed-controls {
+        flex-direction: column;
+        z-index: 10;
+        width: 60px;
+        height: 0;
+        bottom: 45px;
+        left: 43px;
+    }
+
+    .speed-controls-container ul.speed-controls li button {
+        padding: 5px 15px;
+        min-width: 63px;
+    }
+
+    .speed-toggler:hover ~ ul.speed-controls, ul.speed-controls:hover {
+        height: 125px;
+        width: 60px;
+        /* background-color: rgba(66, 64, 64, 0.7); */
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+}
