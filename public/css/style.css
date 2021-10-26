@@ -6,6 +6,7 @@
 body {
     font-family: 'Arial',sans-serif;
     font-weight: bold;
+    background-color: rgb(230, 230, 230);
 }
 
 button {
@@ -20,10 +21,6 @@ button {
 button:hover {
     cursor: pointer;
     background-color: rgba(66, 64, 64, 0.7);
-}
-
-button.mute {
-    /* padding-right: 4px; */
 }
 
 /* to balance out the small difference in width between this button and the unmuted symbol*/
@@ -56,19 +53,15 @@ button.mute:hover + .volume-container {
  
 .player {
     width: 60%;
-    margin: 0 auto;
+    margin: 10vh auto 0;
     position: relative;
 }
 
 .video-container {
     width: 100%;
     margin: 0 auto;
-    display: block; /** Why does setting 'inline-block' not make this centered? */
+    display: block;
 }
-
-/* .video-container.fullscreen {
-    width: 100%;
-} */
 
 .buttons-column {
     display: flex;
@@ -173,7 +166,6 @@ button.mute:hover + .volume-container {
 /*  ----------- Speed control container -----------*/
 .speed-controls-container {
     position: relative;
-    /* display: inline-block; */
 }
 
 .speed-controls-container ul.speed-controls {
@@ -189,20 +181,12 @@ button.mute:hover + .volume-container {
     display: flex;
 }
 
-.speed-controls-container ul.speed-controls li {
-    display: inline-block;
-}
-
 .speed-toggler:hover  {
     cursor: pointer;
 }
 
 .speed-toggler:hover ~ ul.speed-controls, ul.speed-controls:hover {
     width: 280px;
-}
-
-ul.speed-controls:hover ~ .speed-toggler {
-    transform: rotate(180deg);
 }
 
 .speed-controls-container ul.speed-controls button:hover {
