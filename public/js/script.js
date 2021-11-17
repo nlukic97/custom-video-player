@@ -12,31 +12,22 @@ let currVolume //which will be used to return the volume to the previous state u
 
 
 
-/** ------ Interval which checks if the user has hovered over the video, which will show the menu and progress bar until the user stops moving the mouse ------ */
-let mouseMoveInt; //the interval which will be used
-let i_count = 0;
-let intervalStarted = false;
+/** ------ Mouse events which will be respinsible for handling the visibility of the controls/ progress bar upon mouse enter and mouse leave ------ */
+let mouseMoveTimeout; //variable used to clear the timeout in case the mouseover event is triggered while the timeout is active
 
-function startMouseMoveInterval(){
-    mouseMoveInt = setInterval(function(){
-        i_count++
-        if(i_count >= 2){
-            controls.classList.remove('visible')
-            clearInterval(mouseMoveInt)
-            intervalStarted = false;
-        }
+videoContainer.addEventListener('mouseenter',function(){
+    clearTimeout(mouseMoveTimeout)
+    controls.classList.add('visible')
+})
+
+
+videoContainer.addEventListener('mouseleave',function(){
+
+    // a delay before the controls are hidden
+    mouseMoveTimeout = setTimeout(function(){
+        controls.classList.remove('visible')
     },1000)
-}
 
-
-videoContainer.addEventListener('mousemove',function(){
-    i_count = 0;
-    // only start the interval once, it can only be restarted if it manages to end without 'i_count' being reset
-    if(intervalStarted === false){
-        intervalStarted = true;
-        controls.classList.add('visible')
-        startMouseMoveInterval()
-    }
 })
 
 
